@@ -1,0 +1,11 @@
+header {
+  background: $template-color;
+    .header-content {
+      @include flex-layout(center, flex, inherit, flex-end);
+      border-bottom: 1px solid #222;
+      .header-items {
+        @include flex-layout(center, flex, wrap, flex-end);
+        margin: 3px;
+      }
+    }
+}

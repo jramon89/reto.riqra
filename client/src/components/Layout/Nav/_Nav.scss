@@ -1,0 +1,285 @@
+nav {
+
+  padding: 7px 0 7px 0;
+  z-index: 1;
+  @include transition(0.5s);
+  @include flex-layout(inherit, flex, column, center);
+
+
+  background: $template-color; //linear-gradient(rgba(5, 5, 5, 0.83), rgba(7, 7, 7, 0)), url('/images/banner.jpg');
+  &.home_banner {
+    background: $template-color; //linear-gradient(rgba(5, 5, 5, 0.83), rgba(7, 7, 7, 0)), url('/images/bg_home_top_03.jpg');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    @media (max-width: 768px) {
+      background: $template-color;
+    }
+  }
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
+  @media (max-width: 768px) {
+    background: $template-color;;
+  }
+
+  &.hidden {
+    height: 0;
+    padding: 0;
+    .items-menu-content {
+      display: none;
+    }
+  }
+
+  .items-menu-content {
+
+    @include transition(0.2s);
+    @media (max-width: 768px) {
+      overflow: hidden;
+      height: 32px;
+
+      margin: 0px 20px;
+    }
+    .items-menu {
+      @include flex-layout(center, flex, wrap, space-around);
+      @media (max-width: 768px) {
+        align-items: center;
+        flex-flow: column;
+        margin: 0;
+      }
+      padding: 0;
+      .item {
+        list-style-type: none;
+        z-index: 1;
+      }
+      .item:first-child {
+
+        &:hover {
+          opacity: 0.7;
+          @include transition(0.5s);
+        }
+        a {
+          img {
+            display: block;
+            width: 48px;
+            @media (max-width: 768px) {
+              width: 35px;
+            }
+            @include transition(0.5s);
+          }
+        }
+        .m-bar,
+        .s-cart,
+        .l-user {
+          display: none;
+        }
+        @media (min-width: 768px) {
+          flex: 0.6;
+        }
+        @media (max-width: 768px) {
+          margin: 0 0 25px;
+          width: 100%;
+          div {
+            @include flex-layout(center, flex, wrap, space-between);
+            .logo {
+              flex: 0.8;
+            }
+            .switch-lang,
+            .m-bar,
+            .s-cart,
+            .l-user {
+              display: block;
+              width: 23px;
+              height: 23px;
+            }
+            .m-bar {
+              color: $template-backgroundColor;
+              cursor: pointer;
+              font-size: 25px;
+              background-image: url(/images/menu-hamburguer.png);
+              background-size: 100%;
+              background-repeat: no-repeat;
+              background-position: center;
+              /*
+              &::before {
+                font-family: "Font Awesome 5 Free"; font-weight: 900; content: "\f0c9";
+              }
+              &.active {
+                &::before {
+                  font-family: "Font Awesome 5 Free"; font-weight: 900; content: "\f00d";
+                }
+              }
+              */
+
+              &.active {
+                background-image: url(/images/close-menu.png);
+                width: 23px;
+                height: 23px;
+              }
+
+            }
+            .s-cart,
+            .l-user {
+              font-size: 23px;
+            }
+          }
+        }
+      }
+      .item:last-child {
+        ul {
+          padding: 0;
+          li {
+            margin: 10px 0;
+          }
+        }
+        @media(min-width: 768px) {
+          // display: none;
+        }
+      }
+      .item.search{
+          flex: 0.3;
+          @include flex-layout(center, flex, wrap, space-around);
+          form {
+            flex: 1;
+            input {
+            padding: 10px;
+            border: none;
+            border-radius: 20px;
+            &::placeholder {
+              font-size: 15px;
+              opacity: 0.5;
+            }
+            outline: none;
+            width: 100%;
+          }
+        }
+        div {
+          border: solid red;
+        }
+      }
+      .item {
+        color: #fafafa;
+        &.s-cart span:first-child,
+        &.l-user span:first-child {
+          font-size: 20px;
+        }
+      }
+
+      .item:not(:first-child) {
+        a {
+          color: $template-color;
+          padding: 10px 5px 0 0;
+          text-decoration: none;
+          position: relative;
+          &:hover {
+            color: silver;
+          }
+          @media (min-width: 768px) {
+            padding: 10px 5px;
+            &::after,
+            &::before {
+              content: "";
+              background: silver;
+              width: 0%;
+              height: 1px;
+              position: absolute;
+              display: block;
+              left: 0;
+              bottom: 6px;
+              @include transition(0.5s);
+            }
+          }
+          &::after {
+            right: 0;
+            top: 5px;
+            left: initial;
+            bottom: initial;
+          }
+          &:hover::after,
+          &:hover::before {
+            // width: 100%;
+          }
+          color: $template-backgroundColor;
+        }
+        @media (max-width: 768px) {
+          // border-bottom: solid 1px #222;
+          visibility: hidden;
+          padding: 10px;
+          text-align: inherit;
+          width: 100%;
+          &.active {
+            visibility: visible;
+          }
+          &.only-desktop {
+           display: none;
+          }
+        }
+
+      }
+      .social-icons {
+        list-style: none;
+        .links {
+          position: relative;
+          display: inline-block;
+        }
+        .links::before {
+          content: "";
+          display: none;
+          position: absolute;
+          height: 100%;
+          border-left: solid 1px $template-color;
+          opacity: 0.3;
+          overflow: hidden;
+          left: -30px;
+          @media(max-width: 1024px) {
+            display: none;
+          }
+        }
+        a {
+          color: $template-color;
+          opacity: 0.4;
+          font-size: 17px;
+          @include transition(0.5s);
+          &:hover {
+            opacity: 1;
+          }
+
+          @media (min-width: 768px) {
+            color: $template-backgroundColor;
+          }
+        }
+      }
+    }
+  }
+}
+
+nav.scrolling {
+  @media (min-width: 768px) {
+    background: $template-backgroundColor;
+    box-shadow: 0px 0px 15px grey;
+    height: inherit;
+    opacity: 0.9;
+    padding: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    .items-menu {
+      .item:not(:first-child) {
+        a {
+          color: $template-color;
+        }
+      }
+      .item:first-child {
+        a {
+          img {
+            //width: 100px;
+            width: 35px;
+            @include transition(0.5s);
+          }
+        }
+      }
+    }
+  }
+}

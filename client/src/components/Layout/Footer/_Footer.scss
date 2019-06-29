@@ -1,0 +1,14 @@
+footer {
+    background: $template-color;
+    .footer-container {
+        @include flex-layout(inherit, flex, wrap, center);
+        .sections{
+            margin: 12px;
+            color: $template-backgroundColor;
+            a {
+                text-decoration: none;
+                color: $template-backgroundColor;
+            }
+        }
+    }
+}

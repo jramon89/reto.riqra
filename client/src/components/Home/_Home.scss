@@ -1,0 +1,43 @@
+.container {
+  height: 85vh;
+  width: 100%;
+
+  @include flex-layout(center, flex, inherit, center);
+  .content {
+    width: 60%;
+    @include flex-layout(center, flex, column, center);
+    .msg-text-field {
+      width: 100%;;
+      textarea {
+        width: 100%;
+        border: none;
+      }
+      button {
+        width: 100%;
+        padding: 10px;
+        border: none;
+        background: #759fbe;
+        color: #fafafa;
+      }
+    }
+    .msg-list {
+
+      width: 100%;
+      ul {
+        padding: 0;
+        li {
+          margin: 0 0 8px;
+          @include flex-layout(center, flex, wrap, space-between);
+          list-style-type: none;
+          flex: 1;
+          a {
+            color: #759fbe;
+            text-decoration: none;
+          }
+        }
+      }
+    }
+
+  }
+
+}
